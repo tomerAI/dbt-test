@@ -1,0 +1,19 @@
+models:
+  - name: fact_sales
+    description: "Fact table for sales data aggregated by customer and date"
+    columns:
+      - name: customer_id
+        description: "The unique identifier for the customer"
+        tests:
+          - not_null
+      - name: order_date
+        description: "The date of the order"
+        tests:
+          - not_null
+      - name: total_sales
+        description: "Total sales amount"
+        tests:
+          - not_null
+          - relationships:
+              to: ref('customers')
+              field: customer_id
